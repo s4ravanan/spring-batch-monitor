@@ -82,6 +82,9 @@ public class BatchMonitorController {
                 result = new java.util.HashMap<>(result);
                 result.put("steps", repository.steps(id));
                 result.put("parameters", repository.parameters(id));
+                try { result.put("executionContext", repository.executionContext(id)); }
+                catch (org.springframework.dao.EmptyResultDataAccessException ignored) { result.put("executionContext", Map.of()); }
+                result.put("stepContexts", repository.stepContexts(id));
                 return ResponseEntity.ok(result);
             } catch (org.springframework.dao.EmptyResultDataAccessException e) {
                 return ResponseEntity.notFound().build();

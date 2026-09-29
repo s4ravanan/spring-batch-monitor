@@ -55,6 +55,23 @@ public class BatchMetadataRepository {
             """, executionId);
     }
 
+    public Map<String, Object> executionContext(long executionId) {
+        return jdbc.queryForMap("""
+            SELECT SHORT_CONTEXT AS shortContext, SERIALIZED_CONTEXT AS serializedContext
+            FROM BATCH_JOB_EXECUTION_CONTEXT WHERE JOB_EXECUTION_ID = ?
+            """, executionId);
+    }
+
+    public List<Map<String, Object>> stepContexts(long executionId) {
+        return jdbc.queryForList("""
+            SELECT se.STEP_EXECUTION_ID AS stepExecutionId, sec.SHORT_CONTEXT AS shortContext,
+                   sec.SERIALIZED_CONTEXT AS serializedContext
+            FROM BATCH_STEP_EXECUTION_CONTEXT sec
+            JOIN BATCH_STEP_EXECUTION se ON se.STEP_EXECUTION_ID = sec.STEP_EXECUTION_ID
+            WHERE se.JOB_EXECUTION_ID = ? ORDER BY se.STEP_EXECUTION_ID
+            """, executionId);
+    }
+
     public List<Map<String, Object>> instances(String jobName, int limit) {
         return jdbc.queryForList("""
             SELECT JOB_INSTANCE_ID AS instanceId, JOB_NAME AS jobName, JOB_KEY AS jobKey
