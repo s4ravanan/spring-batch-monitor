@@ -1,0 +1,11 @@
+spring:
+  application.name: spring-batch-monitor
+  datasource:
+    url: ${BATCH_MONITOR_DATASOURCE_URL:jdbc:h2:mem:batch;DB_CLOSE_DELAY=-1}
+    username: ${BATCH_MONITOR_DATASOURCE_USERNAME:sa}
+    password: ${BATCH_MONITOR_DATASOURCE_PASSWORD:}
+    driver-class-name: ${BATCH_MONITOR_DATASOURCE_DRIVER:org.h2.Driver}
+  sql.init.mode: ${BATCH_MONITOR_SQL_INIT_MODE:always}
+server.port: ${PORT:8080}
+
+app.batch.table-prefix: ${BATCH_MONITOR_TABLE_PREFIX:BATCH_}
