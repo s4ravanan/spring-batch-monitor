@@ -35,4 +35,6 @@ The Files API mirrors the old admin console's file area while keeping all paths 
 - `GET /api/files/content?path=` downloads a file.
 - `DELETE /api/files?path=` deletes a file.
 
+For an internal development instance, authentication is disabled by default. Enable HTTP Basic authentication for a deployed monitor with `BATCH_MONITOR_SECURITY_ENABLED=true`, `BATCH_MONITOR_SECURITY_USERNAME`, and a strong `BATCH_MONITOR_SECURITY_PASSWORD`. Change the default password whenever authentication is enabled.
+
 Configure the root with `BATCH_MONITOR_UPLOAD_DIR`. Configuration files are stored only; they are not dynamically parsed or loaded as application code.

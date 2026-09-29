@@ -10,3 +10,6 @@ server.port: ${PORT:8080}
 
 app.batch.table-prefix: ${BATCH_MONITOR_TABLE_PREFIX:BATCH_}
 app.files.upload-dir: ${BATCH_MONITOR_UPLOAD_DIR:${java.io.tmpdir}/spring-batch-monitor}
+app.security.enabled: ${BATCH_MONITOR_SECURITY_ENABLED:false}
+app.security.username: ${BATCH_MONITOR_SECURITY_USERNAME:admin}
+app.security.password: ${BATCH_MONITOR_SECURITY_PASSWORD:change-me}
