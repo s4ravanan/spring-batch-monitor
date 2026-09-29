@@ -27,3 +27,12 @@ The monitor now also exposes the legacy operational API when it is embedded in a
 - `POST /api/executions/{id}/restart` restarts a failed execution.
 
 These operations are deliberately unavailable in the standalone viewer until the host application supplies the corresponding Spring Batch beans.
+
+The Files API mirrors the old admin console's file area while keeping all paths below one configured directory:
+
+- `GET /api/files?path=` lists files.
+- `POST /api/files` accepts multipart field `file` and an optional `path`.
+- `GET /api/files/content?path=` downloads a file.
+- `DELETE /api/files?path=` deletes a file.
+
+Configure the root with `BATCH_MONITOR_UPLOAD_DIR`. Configuration files are stored only; they are not dynamically parsed or loaded as application code.
