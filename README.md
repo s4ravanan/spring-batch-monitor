@@ -37,4 +37,6 @@ The Files API mirrors the old admin console's file area while keeping all paths 
 
 For an internal development instance, authentication is disabled by default. Enable HTTP Basic authentication for a deployed monitor with `BATCH_MONITOR_SECURITY_ENABLED=true`, `BATCH_MONITOR_SECURITY_USERNAME`, and a strong `BATCH_MONITOR_SECURITY_PASSWORD`. Change the default password whenever authentication is enabled.
 
+The default H2 profile seeds four example jobs on first launch: a completed sales import, a failed customer export, a currently running inventory sync, and a stopped reconciliation. Demo rows are inserted only when the configured JDBC URL is H2 and the metadata tables are empty. Disable this behavior with `BATCH_MONITOR_DEMO_DATA_ENABLED=false`.
+
 Configure the root with `BATCH_MONITOR_UPLOAD_DIR`. Configuration files are stored only; they are not dynamically parsed or loaded as application code.

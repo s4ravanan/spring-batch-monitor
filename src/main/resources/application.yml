@@ -13,3 +13,4 @@ app.files.upload-dir: ${BATCH_MONITOR_UPLOAD_DIR:${java.io.tmpdir}/spring-batch-
 app.security.enabled: ${BATCH_MONITOR_SECURITY_ENABLED:false}
 app.security.username: ${BATCH_MONITOR_SECURITY_USERNAME:admin}
 app.security.password: ${BATCH_MONITOR_SECURITY_PASSWORD:change-me}
+app.demo-data.enabled: ${BATCH_MONITOR_DEMO_DATA_ENABLED:true}
